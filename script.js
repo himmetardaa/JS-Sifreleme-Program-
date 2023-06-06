@@ -3,12 +3,12 @@ var btnSifrele=document.getElementById("sifrele");
 
 var resetBtn = document.getElementById("reset");
     resetBtn.addEventListener("click", function() {
-        document.getElementById("inputnmbr").value = "";
+        document.getElementById("inptnmbr").value = "";
     });
     	
 function myFunction() {
     var dizi = [];
-    var sayi = parseInt(document.getElementById("inputnmbr").value);
+    var sayi = parseInt(document.getElementById("inptnmbr").value);
     
     for (var i = 4; i >= 0; i--) { 
       dizi[i] = (sayi % 10 + 9) % 10;
@@ -24,7 +24,8 @@ function myFunction() {
       dizi[1] = dizi[3];
       dizi[3] = temp;
 
-      var result = dizi.join("");
     }
-    window.alert(result);
+    var result = dizi.join("");
+    document.getElementById("yazdir").innerHTML=("Şifrelenemiş sayı:"+ " "+result);
+    
   }

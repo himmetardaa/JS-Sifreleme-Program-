@@ -1,51 +1,140 @@
-*,
-*::before,
-*::after {
-    margin: 0;
-    padding: 0;
+@property --rotate {
+    syntax: "<angle>";
+    initial-value: 132deg;
+    inherits: false;
+  }
+  
+  :root {
+    --card-height: 65vh;
+    --card-width: calc(var(--card-height) / 1.5);
+  }
+  
+  
+  body {
+    min-height: 100vh;
+    background: #212534;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
     box-sizing: border-box;
-}
-
-body {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    align-items: center;
+  }
+  
+  
+  .card {
+    background: #191c29;
+    width: var(--card-width);
+    height: var(--card-height);
+    padding: 3px;
+    position: relative;
+    border-radius: 6px;
     justify-content: center;
-    background-color: cornflowerblue;
-}
-
-div  {
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 30px;
+    align-items: center;
     text-align: center;
-    display: flex;
-    align-items: center;
+    display: grid;
+    font-size: 1.5em;
+    color: rgb(88 199 250 / 0%);
+    cursor: pointer;
+    font-family: cursive;
+  }
+  
+  .card:hover {
+    color: rgb(88 199 250 / 100%);
+    transition: color 1s;
+  }
+  
+  
+  
+  .card::before {
+    content: "";
+    width: 104%;
+    height: 102%;
+    border-radius: 8px;
+    background-image: linear-gradient(
+      var(--rotate)
+      , #5ddcff, #3c67e3 43%, #4e00c2);
+      position: absolute;
+      z-index: -1;
+      top: -1%;
+      left: -2%;
+      animation: spin 2.5s linear infinite;
+  }
+  
+  .card::after {
+    position: absolute;
+    content: "";
+    top: calc(var(--card-height) / 6);
+    left: 0;
+    right: 0;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+    transform: scale(0.8);
+    filter: blur(calc(var(--card-height) / 6));
+    background-image: linear-gradient(
+      var(--rotate)
+      , #5ddcff, #3c67e3 43%, #4e00c2);
+      opacity: 1;
+    transition: opacity .5s;
+    animation: spin 2.5s linear infinite;
+  }
+
+
+  
+  @keyframes spin {
+    0% {
+      --rotate: 0deg;
+    }
+    100% {
+      --rotate: 360deg;
+    }
+  }
+  
+
+.growing-search {
+font-size: 30px;
+padding: 5px 5px 5px 7px;
+border-radius: 5px;
+background: #fff;
+margin: auto;
 }
 
-input{
-    display: flex;
-    gap: 25px;
-    font-size: 30px;
-    width: 150px;
-    margin: 10px;
+.growing-search div {
+display: inline-block;
+font-size: 30px;
 }
 
-div button {
+.growing-search .input input {
+margin-right: 0;
+border: none;
+font-size: inherit;
+transition: width 200ms;
+padding-top: 5px;
+padding-left: 5px;
+padding-bottom: 5px;
+width: 140px;
+color: #f80000;
+border-bottom: 1px solid #eee;
+}
+
+div #buttons button{
     background-color: greenyellow;
-    display: flex;
-    align-items: center;
-    margin: auto;
-    padding: 10px;
+    padding: 20px;
     width: auto;
     text-align: center;
     font-size: 20px;
-    border-radius: 5px;
+    border-radius: 18px;
     border: none;
     cursor: pointer;
     transition: all .2s;
     box-shadow: 0 0 20px rgba(0, 0, 0, .8);
-    margin: 10px;
+    margin: 15px;
+}
+
+div #buttons #reset{
+    background-color: red;
 }
 
 button:hover {
